@@ -9,11 +9,6 @@ st.write(
   """choose fruits you want in custom smoothie
   """
 )
-
-
-
-
-
 # Get the current credentials
 #session = get_active_session()
 cnx=st.connection("snowflake")
@@ -50,5 +45,9 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
     st.stop()
+
+import requests
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
 
 
